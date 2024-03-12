@@ -30,3 +30,8 @@ E)Payments
 Define payment routes
 1./payment/
 2./payment/cancel
+
+Mongoose Section
+
+A)Define User Schema
+B)Define Campaign Schema
