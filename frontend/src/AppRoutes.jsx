@@ -3,12 +3,14 @@ import LandingPage from "./pages/LandingPage";
 import AboutUsPage from "./pages/AboutUsPage";
 import HowItWorksPage from "./pages/HowItWorksPage";
 import ContactUsPage from "./pages/ContactUsPage";
+import ProjectsPage from "./pages/ProjectsPage";
 const AppRoutes = () => {
   return (
    <Routes>
     <Route path="/" element={<LandingPage/>}></Route>
     <Route path="/about-us" element={<AboutUsPage/>}></Route>
     <Route path="/how-it-works" element={<HowItWorksPage></HowItWorksPage>}></Route>
+    <Route path="/projects" element={<ProjectsPage/>}></Route>
     <Route path="/contact-us" element={<ContactUsPage></ContactUsPage>}></Route>
    </Routes>
   )

@@ -31,9 +31,11 @@ function Navbar() {
     <nav className="bg-white shadow">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between py-4">
-          <div>
-            <Link to="/" className="text-xl font-bold text-gray-900">Caring Cause</Link>
-          </div>
+        <div className="flex items-center ml-5">
+          <img src="https://cdn.discordapp.com/attachments/1224934101006417990/1225009641218379856/804229_preview-Photoroom.jpg?ex=661f9222&is=660d1d22&hm=570e298f916748c005a6d938d0e961109d41c27c4973d1117fd8aa8770682e14&"
+           alt="Logo" className="h-8 mr-2 rounded-full" /> {/* Add your logo image here */}
+          <Link to="/" className="text-xl font-bold">Caring Cause</Link>
+        </div>
           <div className="md:hidden">
             <button
               className="block text-gray-700 hover:text-gray-900 focus:outline-none"
