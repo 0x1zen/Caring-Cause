@@ -18,6 +18,7 @@ function Navbar() {
         try {
           const accessToken = await getAccessTokenSilently();
           localStorage.setItem("token", accessToken);
+          console.log("User",user);
         } catch (error) {
           console.error('Error fetching user information:', error);
         }

@@ -3,10 +3,10 @@ const router=express.Router();
 const zod=require('zod');
 const jwt=require('jsonwebtoken');
 const {JWT_SECRET}=require('../config')
-const authMiddleware=require('../middleware');
 
-const app=express();
-
-app.get("/")
+// Define user authentication routes
+// 1.Signin
+// 2.Singup
+// 3.Forgot Password
 
 module.exports=router;

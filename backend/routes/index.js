@@ -1,15 +1,21 @@
 const express=require('express');
 const userRouter=require('./user');
-const profileRouter=require("./profile");
-const searchRouter=require("./search");
-const paymentRouter=require("./payment");
+const campaignRouter=require('./campaign');
+const { Campaign } = require('../db');
 
+const app=express();
 
-const router=express.Router();
+app.get('/projects', async (req, res) => {
+    try {
+      const projects = await Campaign.find({}, 'picture campaignName category startDate endDate donationAmount');
+      res.status(200).json(projects);
+    } catch (error) {
+      console.error('Error retrieving projects:', error);
+      res.status(500).json({ message: 'Internal server error' });
+    }
+  });
 
 router.use("/user", userRouter);
-router.use("/profile",profileRouter);
-router.use("/dashboard",searchRouter);
-router.use("/dashboard",paymentRouter);
+router.use("/campaign",campaignRouter)
 
 module.exports=router;

@@ -12,7 +12,7 @@ function ProjectsNavbar() {
         </div>
         <div className='flex gap-5'>
           <p className="text-xl font-bold ">Start Your FundRaiser Now</p>
-          <Link to="/fundraiser" className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-md">
+          <Link to="/fund-raiser" className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-md">
             FundRaiser
           </Link>
         </div>
