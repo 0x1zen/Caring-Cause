@@ -1,14 +1,31 @@
 
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import LoginButton from './buttons/LoginButton';
+import Button from './buttons/Button';
+import { useAuth0 } from '@auth0/auth0-react';
 
 function Navbar() {
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
+  const {user,loginWithRedirect,isAuthenticated,logout,getAccessTokenSilently}=useAuth0();
 
   const handleMobileNavToggle = () => {
     setIsMobileNavOpen(!isMobileNavOpen);
   };
+
+  useEffect(() => {
+    const getUserInfo = async () => {
+      if (isAuthenticated) {
+        try {
+          const accessToken = await getAccessTokenSilently();
+          localStorage.setItem("token", accessToken);
+        } catch (error) {
+          console.error('Error fetching user information:', error);
+        }
+      }
+    };
+
+    getUserInfo();
+  }, [isAuthenticated, getAccessTokenSilently, user]);
 
   return (
     <nav className="bg-white shadow">
@@ -47,10 +64,11 @@ function Navbar() {
               <li><Link to="/contact-us" className="text-gray-700 hover:text-gray-900">Contact Us</Link></li>
             </ul>
           </div>
-          <div className="hidden md:block">
-            <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full">
-              Login
-            </button>
+          <div className="hidden md:flex items-center space-x-4">
+            {isAuthenticated && <h3 className='text-xl font-bold text-gray-900'>Welcome, {user.name}</h3>}
+            {isAuthenticated ? <Button onClick={(e)=>logout()}>Log Out</Button> : (
+                <Button onClick={(e)=>loginWithRedirect()}>Log In</Button>
+            )}
           </div>
         </div>
       </div>
@@ -63,7 +81,9 @@ function Navbar() {
               <li><Link to="/how-it-works" className="text-gray-700 hover:text-gray-900">How It Works</Link></li>
               <li><Link to="/projects" className="text-gray-700 hover:text-gray-900">Projects</Link></li>
               <li><Link to="/contact-us" className="text-gray-700 hover:text-gray-900">Contact Us</Link></li>
-            <li><LoginButton/></li>
+              <li>{isAuthenticated ? <Button onClick={(e)=>logout()}>Log Out</Button> : (
+                <Button onClick={(e)=>{loginWithRedirect()}}>Log In</Button>
+                )}</li>
           </ul>
         </div>
       )}
