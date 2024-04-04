@@ -7,6 +7,6 @@ const authMiddleware=require('../middleware');
 
 const app=express();
 
-app.get("/")
+
 
 module.exports=router;
