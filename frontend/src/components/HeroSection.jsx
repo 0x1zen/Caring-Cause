@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { Link } from 'react-router-dom';
 function HeroSection() {
   return (
     <section className="relative h-screen">
@@ -16,7 +16,7 @@ function HeroSection() {
           <h1 className="text-5xl font-bold mb-4">Support Innovative Projects</h1>
           <p className="text-xl mb-8">Help bring ideas to life with crowdfunding.</p>
           <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-full">
-            Discover Projects
+            <Link to="/projects">Discover Projects</Link>
           </button>
         </div>
       </div>
